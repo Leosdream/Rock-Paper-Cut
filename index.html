@@ -8,7 +8,9 @@
 <body>
 
 <script>
-    
+
+console.log("Pick either Rock, Paper or Scissors.")
+console.log("After 5 rounds there will be a winner")
 
 function getComputerChoice(){
     let randomNr=Math.random();
@@ -26,13 +28,15 @@ function getHumanChoice(){
     return choice
 }
 
-
 let humanScore=0;
 let computerScore=0;
+
 function playRound(humanChoice, computerChoice){
     humanChoice=humanChoice.toUpperCase();
+
     if (humanChoice==computerChoice)
     return console.log("It's a TIE")
+
     switch (humanChoice){
     case "ROCK":
         if(computerChoice=="PAPER"){
@@ -61,9 +65,8 @@ function playRound(humanChoice, computerChoice){
         return console.log("You win SCISSORS beats PAPER");}
     break;
     }
+
 }
-
-
 function playGame() {
     for(i=1;i<=5;i++){
         let human= getHumanChoice();
