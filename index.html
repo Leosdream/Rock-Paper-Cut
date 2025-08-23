@@ -69,8 +69,9 @@ function playGame() {
         let human= getHumanChoice();
         let bot= getComputerChoice();
         console.log("ROUND "+ i)
-        console.log("Computer picked: " + bot);
+        console.log("AI chose: " + bot);
         playRound(human, bot);
+        console.log("Your score is: " + humanScore + "   AI score is: "+computerScore)
     }
  if (humanScore>computerScore)
     console.log("You won " + humanScore + " to "+ computerScore);
