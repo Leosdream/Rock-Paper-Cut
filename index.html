@@ -13,15 +13,76 @@
 function getComputerChoice(){
     let randomNr=Math.random();
     if (randomNr<0.33)
-        return "Rock"
+        return "ROCK"
         else 
     if (randomNr<0.66)
-        return "Paper"
+        return "PAPER"
         else
-        return "Scissors"
-   
+        return "SCISSORS"
 }
-console.log(getComputerChoice())
+
+function getHumanChoice(){
+    const choice = window.prompt("Type your answer", "");
+    return choice
+}
+
+
+let humanScore=0;
+let computerScore=0;
+function playRound(humanChoice, computerChoice){
+    humanChoice=humanChoice.toUpperCase();
+    if (humanChoice==computerChoice)
+    return console.log("It's a TIE")
+    switch (humanChoice){
+    case "ROCK":
+        if(computerChoice=="PAPER"){
+        computerScore++;
+        return console.log("You lose PAPER beats ROCK");}
+        else {
+        humanScore++;
+        return console.log("You win ROCK beats SCISSORS");}
+    break;
+
+    case "PAPER":
+        if(computerChoice=="SCISSORS"){
+        computerScore++;
+        return console.log("You lose SCISSORS beats PAPER");}
+        else {
+        humanScore++;
+        return console.log("You win PAPER beats ROCK");}
+    break;
+
+     case "SCISSORS":
+        if(computerChoice=="ROCK"){
+        computerScore++;
+        return console.log("You lose ROCK beats SCISSORS");}
+        else {
+         humanScore++;
+        return console.log("You win SCISSORS beats PAPER");}
+    break;
+    }
+}
+
+
+function playGame() {
+    for(i=1;i<=5;i++){
+        let human= getHumanChoice();
+        let bot= getComputerChoice();
+        console.log("ROUND "+ i)
+        console.log("Computer picked: " + bot);
+        playRound(human, bot);
+    }
+ if (humanScore>computerScore)
+    console.log("You won " + humanScore + " to "+ computerScore);
+    else 
+    console.log("You lose " + computerScore + " to "+ humanScore);
+}
+
+playGame();
+
+
+
+
     </script>
 
 </body>
