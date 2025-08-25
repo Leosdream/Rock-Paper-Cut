@@ -14,10 +14,10 @@ console.log("After 5 rounds there will be a winner")
 
 function getComputerChoice(){
     let randomNr=Math.random();
-    if (randomNr<0.33)
+    if (randomNr<1/3)
         return "ROCK"
         else 
-    if (randomNr<0.66)
+    if (randomNr<2/3)
         return "PAPER"
         else
         return "SCISSORS"
