@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+<div> Pick either Rock, Paper or Scissors. </div>
+<div> Best out of 5 wins </div>
 <button id="btnRock"> ROCK</button>
 <button id="btnPaper"> PAPER</button>
 <button id="btnScissors"> SCISSORS</button>
@@ -18,10 +20,6 @@
  const round = document.createElement("p");
  const aiChoice= document.createElement("p");
  const score= document.createElement("p");
-
-
-console.log("Pick either Rock, Paper or Scissors.")
-console.log("Best out of 5 wins")
 
 function getComputerChoice(){
     let randomNr=Math.random();
