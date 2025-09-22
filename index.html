@@ -6,8 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+<button id="btnRock"> ROCK</button>
+<button id="btnPaper"> PAPER</button>
+<button id="btnScissors"> SCISSORS</button>
+<div id="results"></div>
 
 <script>
+
+
+ const div = document.querySelector("#results");
+ const round = document.createElement("p");
+ const aiChoice= document.createElement("p");
+ const score= document.createElement("p");
+
 
 console.log("Pick either Rock, Paper or Scissors.")
 console.log("Best out of 5 wins")
@@ -23,74 +34,95 @@ function getComputerChoice(){
         return "SCISSORS"
 }
 
-function getHumanChoice(){
-    const choice = window.prompt("Type your answer", "");
-    return choice
-}
 
 let humanScore=0;
 let computerScore=0;
 
+
 function playRound(humanChoice, computerChoice){
-    humanChoice=humanChoice.toUpperCase();
+
+
+
 
     if (humanChoice==computerChoice)
-    return console.log("It's a tie")
+    return div.textContent = "It's a tie";
 
     switch (humanChoice){
     case "ROCK":
         if(computerChoice=="PAPER"){
         computerScore++;
-        return console.log("You lose PAPER beats ROCK");}
+        return div.textContent = "You lose PAPER beats ROCK";}
         else {
         humanScore++;
-        return console.log("You win ROCK beats SCISSORS");}
+        return div.textContent = "You win ROCK beats SCISSORS";}
     break;
 
     case "PAPER":
         if(computerChoice=="SCISSORS"){
         computerScore++;
-        return console.log("You lose SCISSORS beats PAPER");}
+        return div.textContent = "You lose SCISSORS beats PAPER";}
         else {
         humanScore++;
-        return console.log("You win PAPER beats ROCK");}
+        return div.textContent = "You win PAPER beats ROCK";}
     break;
 
      case "SCISSORS":
         if(computerChoice=="ROCK"){
         computerScore++;
-        return console.log("You lose ROCK beats SCISSORS");}
+        return div.textContent ="You lose ROCK beats SCISSORS";}
         else {
          humanScore++;
-        return console.log("You win SCISSORS beats PAPER");}
+        return div.textContent ="You win SCISSORS beats PAPER";}
     break;
     }
 
 }
-function playGame() {
+let roundNumber=1;
 
-    for(i=1;i<=5;i++){
-        let human= getHumanChoice();
+document.getElementById("btnRock").addEventListener("click", function() { 
+  playGame("ROCK",); roundNumber++
+});
+document.getElementById("btnPaper").addEventListener("click", function() {
+  playGame("PAPER"); roundNumber++
+});
+document.getElementById("btnScissors").addEventListener("click", function() {
+  playGame("SCISSORS"); roundNumber++
+});
+
+function playGame(human) {
+        
         let bot= getComputerChoice();
-        console.log("-ROUND "+ i+"-")
-        console.log("AI chose: " + bot);
+        round.textContent=("-ROUND "+ roundNumber+"-");
+        aiChoice.textContent=("AI chose: " + bot);
         playRound(human, bot);
-        console.log("Your score is: " + humanScore + "   AI score is: "+computerScore)
+        score.textContent=("Your score is: " + humanScore + "   AI score is: "+computerScore)
         if (humanScore==3 || computerScore==3){
-        i=5;}
-    }
-    console.log("-GAME END-");
+         roundNumber=5;}
+
+    
+
+if(roundNumber==5){
+    div.textContent=("-GAME OVER-");
  if (humanScore>computerScore)
-    console.log("You won the game " + humanScore + " to "+ computerScore);
+    score.textContent= ("You won the game " + humanScore + " to "+ computerScore);
     else 
     if(computerScore>humanScore)
-    console.log("You lost the game " + computerScore + " to "+ humanScore);
+    score.textContent=("You lost the game " + computerScore + " to "+ humanScore);
     else
-    console.log("It's a tie " + computerScore + " to "+ humanScore);
+    score.textContent=("It's a tie " + computerScore + " to "+ humanScore);
+roundNumber=0;
+humanScore=0;
+computerScore=0;
+
+}
+
+   div.insertBefore(round, div.firstChild);
+   round.appendChild(aiChoice)
+   div.append(score)
     
 }
 
-playGame();
+
 
 
 
