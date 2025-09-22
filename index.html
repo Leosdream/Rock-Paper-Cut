@@ -20,6 +20,8 @@
  const round = document.createElement("p");
  const aiChoice= document.createElement("p");
  const score= document.createElement("p");
+ const finalScore =document.createElement("p")
+ const finalDiv =document.createElement("p");
 
 function getComputerChoice(){
     let randomNr=Math.random();
@@ -100,23 +102,27 @@ function playGame(human) {
     
 
 if(roundNumber==5){
-    div.textContent=("-GAME OVER-");
+    finalDiv.textContent=("-GAME OVER-");
  if (humanScore>computerScore)
-    score.textContent= ("You won the game " + humanScore + " to "+ computerScore);
+    finalScore.textContent= ("You won the game " + humanScore + " to "+ computerScore);
     else 
     if(computerScore>humanScore)
-    score.textContent=("You lost the game " + computerScore + " to "+ humanScore);
+    finalScore.textContent=("You lost the game " + computerScore + " to "+ humanScore);
     else
-    score.textContent=("It's a tie " + computerScore + " to "+ humanScore);
+    finalScore.textContent=("It's a tie " + computerScore + " to "+ humanScore);
+
 roundNumber=0;
 humanScore=0;
 computerScore=0;
 
 }
 
-   div.insertBefore(round, div.firstChild);
+    div.insertBefore(round, div.firstChild);
    round.appendChild(aiChoice)
-   div.append(score)
+   div.append(finalDiv)
+   div.append(finalScore)
+   
+   
     
 }
 
