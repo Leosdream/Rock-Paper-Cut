@@ -90,7 +90,8 @@ document.getElementById("btnScissors").addEventListener("click", function() {
 });
 
 function playGame(human) {
-        
+        finalScore.textContent="";
+        finalDiv.textContent="";
         let bot= getComputerChoice();
         round.textContent=("-ROUND "+ roundNumber+"-");
         aiChoice.textContent=("AI chose: " + bot);
@@ -115,10 +116,13 @@ roundNumber=0;
 humanScore=0;
 computerScore=0;
 
+
+
 }
 
     div.insertBefore(round, div.firstChild);
    round.appendChild(aiChoice)
+   div.append(score)
    div.append(finalDiv)
    div.append(finalScore)
    
